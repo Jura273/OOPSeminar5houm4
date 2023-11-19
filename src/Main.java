@@ -1,17 +1,28 @@
-// Press Shift twice to open the Search Everywhere dialog and type `show whitespaces`,
-// then press Enter. You can now see whitespace characters in your code.
+import java.util.List;
+
 public class Main {
     public static void main(String[] args) {
-        // Press Alt+Enter with your caret at the highlighted text to see how
-        // IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+        // Использование функции createStudyGroup
+        // Создание обьектов преподавателя и списка студентов
 
-        // Press Shift+F10 or click the green arrow button in the gutter to run the code.
-        for (int i = 1; i <= 5; i++) {
+        Teacher teacher = new Teacher(" Петр Иванович ");
+        List<Student> students = List.of(
+                new Student("Алексей, "),
+                new Student("Андрей, "),
+                new Student("Геннадий ")
+        );
 
-            // Press Shift+F9 to start debugging your code. We have set one breakpoint
-            // for you, but you can always add more by pressing Ctrl+F8.
-            System.out.println("i = " + i);
+        // Формирование StudyGroup с помощью функции createStudyGroup
+        StudyGroup studyGroup = StudyGroupService.createStudyGroup(teacher, students);
+        // вывод информации о созданной StudyGroup
+
+        System.out.println("Группа: ");
+        System.out.println("Преподаватель: " + studyGroup.getTeacher().getName());
+        System.out.println("Студенты: ");
+        for (Student student : studyGroup.getStudents()){
+            System.out.printf(student.getName());
         }
+
+
     }
 }
